@@ -2,6 +2,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import SimpleFlash from '@/Components/SimpleFlash';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
@@ -25,10 +26,28 @@ export default function AuthenticatedLayout({ header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
+                                    href={route('admin.dashboard')}
+                                    active={route().current('admin.dashboard')}
                                 >
                                     Dashboard
+                                </NavLink>
+                                <NavLink
+                                    href={route('admin.projects.index')}
+                                    active={route().current('admin.projects.*')}
+                                >
+                                    Projects
+                                </NavLink>
+                                <NavLink
+                                    href={route('admin.skills.index')}
+                                    active={route().current('admin.skills.*')}
+                                >
+                                    Skills
+                                </NavLink>
+                                <NavLink
+                                    href={route('admin.contacts.index')}
+                                    active={route().current('admin.contacts.*')}
+                                >
+                                    Messages
                                 </NavLink>
                             </div>
                         </div>
@@ -129,10 +148,28 @@ export default function AuthenticatedLayout({ header, children }) {
                 >
                     <div className="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
-                            href={route('dashboard')}
-                            active={route().current('dashboard')}
+                            href={route('admin.dashboard')}
+                            active={route().current('admin.dashboard')}
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('admin.projects.index')}
+                            active={route().current('admin.projects.*')}
+                        >
+                            Projects
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('admin.skills.index')}
+                            active={route().current('admin.skills.*')}
+                        >
+                            Skills
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('admin.contacts.index')}
+                            active={route().current('admin.contacts.*')}
+                        >
+                            Messages
                         </ResponsiveNavLink>
                     </div>
 
@@ -171,6 +208,9 @@ export default function AuthenticatedLayout({ header, children }) {
             )}
 
             <main>{children}</main>
+            
+            {/* Simple Flash Messages */}
+            <SimpleFlash />
         </div>
     );
 }
