@@ -1,161 +1,43 @@
-# 💼 Portfolio Website
+# 🚀 Muhamad Nur Yanfa - Portfolio
 
-Modern, responsive portfolio website built with Laravel, React, and Tailwind CSS.
+> **Backend Engineer | System Architect | Laravel Specialist**
 
-## ✨ Features
+Welcome to the source code of my personal portfolio website. This project is built to showcase my skills in backend engineering, system architecture, and modern web development using the **Laravel** ecosystem.
 
-- 🎨 **Modern Design** - Clean, professional, and eye-catching
-- 📱 **Fully Responsive** - Works perfectly on all devices
-- 🌙 **Dark Mode** - Toggle between light and dark themes
-- 🚀 **Smooth Animations** - Engaging user experience
-- 📧 **Contact Form** - Functional contact form with database storage
-- 🔧 **Admin Panel** - Manage projects, skills, and messages
-- 📊 **Dynamic Content** - All content managed through database
-- 🎯 **SEO Optimized** - Meta tags and semantic HTML
+![Tech Stack](https://skillicons.dev/icons?i=laravel,react,tailwind,mysql,php,js,vscode)
 
-## 🛠️ Tech Stack
+## 🌌 Project Overview
 
-- **Backend**: Laravel 11
-- **Frontend**: React 18 + Inertia.js
-- **Styling**: Tailwind CSS
-- **Database**: SQLite (easily changeable)
-- **Build Tool**: Vite
-- **Authentication**: Laravel Breeze
+This website serves as my digital identity, featuring a "Cosmic Void" design philosophy that represents the depth of backend infrastructure. It is a fully dynamic application, not just a static template.
 
-## 🚀 Quick Start
+### Key Features
+- **Dynamic Content Management**: Custom Admin Panel to manage Projects, Skills, and Experiences.
+- **Modern Tech Stack**: Built with **Laravel 11** and **React (Inertia.js)** for a seamless Single Page Application (SPA) experience.
+- **Responsive Design**: "Mobile-first" approach using Tailwind CSS.
+- **Micro-Interactions**: Smooth animations using Framer Motion (Marquee, Scroll Reveal, Hovers).
+- **Secure Architecture**: RESTful structure, protected Admin routes, and secure authentication.
 
-### Prerequisites
-- PHP 8.1+
-- Node.js 16+
-- Composer
+## 🛠️ Technology Stack
 
-### Installation
+| Category | Technologies |
+|----------|--------------|
+| **Core** | PHP 8.2+, Laravel 11 |
+| **Frontend** | React 18, Inertia.js, Tailwind CSS |
+| **Database** | MySQL / SQLite |
+| **UI/UX** | Framer Motion, Headless UI |
+| **Build Tool** | Vite |
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd Website-Portofolio
-   ```
+## 🔒 Security & Privacy
 
-2. **Install dependencies**
-   ```bash
-   composer install
-   npm install
-   ```
+This repository contains the public source code. Sensitive configuration (like environment variables, API keys, and admin credentials) is strictly excluded and managed via `.env` on the production server.
 
-3. **Environment setup**
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-
-4. **Database setup**
-   ```bash
-   php artisan migrate
-   php artisan db:seed
-   ```
-
-5. **Start development servers**
-   ```bash
-   # Terminal 1 - Laravel
-   php artisan serve
-   
-   # Terminal 2 - Vite
-   npm run dev
-   ```
-
-6. **Access the application**
-   - Portfolio: http://localhost:8000
-   - Admin Panel: http://localhost:8000/login
-     - Email: `admin@portfolio.com`
-     - Password: `password`
-
-## 📁 Project Structure
-
-```
-├── app/                    # Laravel application
-│   ├── Http/Controllers/   # Controllers
-│   └── Models/            # Eloquent models
-├── database/              # Migrations & seeders
-├── docs/                  # Documentation
-├── public/                # Public assets
-│   └── images/           # Portfolio images
-├── resources/
-│   ├── js/               # React components
-│   │   ├── Components/   # Reusable components
-│   │   └── Pages/        # Page components
-│   └── views/            # Blade templates
-└── routes/               # Route definitions
-```
-
-## 📚 Documentation
-
-Comprehensive guides available in the `docs/` folder:
-
-- **[Quick Start Guide](docs/QUICK_START.md)** - Get started quickly
-- **[Features Overview](docs/FEATURES.md)** - Complete feature list
-- **[Admin Guide](docs/ADMIN_GUIDE.md)** - Admin panel usage
-- **[Photo Guide](docs/PHOTO_GUIDE.md)** - Upload and manage photos
-- **[Social Media Guide](docs/SOCIAL_MEDIA_GUIDE.md)** - Configure social links
-- **[Customization Guide](docs/CUSTOMIZATION.md)** - Customize the portfolio
-- **[Implementation Log](docs/IMPLEMENTATION_LOG.md)** - Development history
-
-## 🎨 Customization
-
-### Update Personal Information
-1. Edit `resources/js/Pages/Home.jsx`
-2. Update name, description, and contact info
-
-### Add Your Photos
-1. Place photos in `public/images/`
-2. Update image paths in components
-3. See [Photo Guide](docs/PHOTO_GUIDE.md) for details
-
-### Manage Content via Admin
-1. Login to admin panel
-2. Add/edit projects and skills
-3. View contact messages
-
-## 🔧 Development
-
-### Available Commands
-```bash
-# Development
-npm run dev              # Start Vite dev server
-php artisan serve        # Start Laravel server
-
-# Production
-npm run build           # Build for production
-php artisan optimize    # Optimize Laravel
-
-# Database
-php artisan migrate     # Run migrations
-php artisan db:seed     # Seed database
-php artisan tinker      # Laravel REPL
-```
-
-## 🚀 Deployment
-
-### Production Setup
-1. Set environment to production in `.env`
-2. Configure database connection
-3. Run production build: `npm run build`
-4. Optimize Laravel: `php artisan optimize`
-5. Set up web server (Apache/Nginx)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+- **Admin Access**: Restricted to authorized personnel only.
+- **Contact Form**: Messages are securely stored in the database.
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ---
 
-**Built with ❤️ using Laravel, React & Tailwind CSS**
-
-🌟 **Star this repository if you found it helpful!**
+© 2026 Muhamad Nur Yanfa. Crafted in the Void.
