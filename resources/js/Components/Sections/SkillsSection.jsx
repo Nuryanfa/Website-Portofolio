@@ -1,54 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import SectionTitle from '@/Components/SectionTitle';
-import SkillCard from '@/Components/SkillCard';
 
 export default function SkillsSection({ skills }) {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1
-        }
-    };
+    // Duplicate skills to create seamless loop
+    const doubledSkills = [...skills, ...skills];
 
     return (
-        <section
-            id="skills"
-            className="min-h-screen flex items-center py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 transition-colors duration-300"
-        >
-            <div className="container mx-auto max-w-6xl">
-                <SectionTitle
-                    title="Skills & Expertise"
-                    subtitle="Teknologi dan tools yang saya kuasai"
-                />
-                
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-                >
-                    {skills.map((skill, index) => (
-                        <motion.div key={index} variants={itemVariants}>
-                            <SkillCard {...skill} />
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {/* Additional Category or Marquee could go here */}
+        <div className="w-full overflow-hidden mask-linear-gradient">
+            <div className="flex gap-8 w-max animate-marquee">
+                {doubledSkills.map((skill, index) => (
+                    <motion.div 
+                        key={index}
+                        whileHover={{ scale: 1.1, color: '#00f3ff' }}
+                        className="flex flex-col items-center justify-center min-w-[100px] p-4 bg-white/5 border border-white/5 rounded-xl transition-colors cursor-pointer"
+                    >
+                        <div className="text-3xl mb-2">{skill.icon}</div>
+                        <span className="text-xs font-mono text-gray-400 uppercase tracking-widest whitespace-nowrap">{skill.name}</span>
+                    </motion.div>
+                ))}
             </div>
-        </section>
+        </div>
     );
 }

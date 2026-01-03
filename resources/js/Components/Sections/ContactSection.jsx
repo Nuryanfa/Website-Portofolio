@@ -1,43 +1,25 @@
 import React from 'react';
-import SectionTitle from '@/Components/SectionTitle';
 import ContactForm from '@/Components/ContactForm';
 
 export default function ContactSection() {
     return (
-        <section
-            id="contact"
-            className="min-h-screen flex items-center py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800 transition-colors duration-300 relative overflow-hidden"
-        >
-            {/* Background Decorations */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="flex flex-col items-center gap-12">
+            {/* Social Orbit */}
+            <div className="flex flex-wrap justify-center gap-6">
+                 <SocialLink href="mailto:nuryanfa@example.com" icon={<EmailIcon />} label="Email" />
+                 <SocialLink href="https://github.com/Nuryanfa" icon={<GithubIcon />} label="GitHub" />
+                 <SocialLink href="https://linkedin.com" icon={<LinkedinIcon />} label="LinkedIn" />
+                 <SocialLink href="https://instagram.com" icon={<InstagramIcon />} label="Instagram" />
             </div>
 
-            <div className="container mx-auto max-w-4xl relative z-10">
-                <div className="text-center text-white mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        Mari Bekerja Sama!
-                    </h2>
-                    <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                        Tertarik untuk berkolaborasi? Isi form di bawah atau hubungi saya langsung melalui sosial media.
-                    </p>
-                </div>
-
-                {/* Contact Form Container with Glassmorphism */}
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl shadow-2xl">
-                    <ContactForm />
-                </div>
-
-                {/* Social Links */}
-                <div className="mt-16 flex flex-wrap gap-4 justify-center items-center">
-                    <SocialLink href="mailto:nuryanfa@example.com" icon={<EmailIcon />} label="Email" />
-                    <SocialLink href="https://github.com/Nuryanfa" icon={<GithubIcon />} label="GitHub" />
-                    <SocialLink href="https://www.linkedin.com/in/muhamad-nur-yanfa-069036368/" icon={<LinkedinIcon />} label="LinkedIn" />
-                    <SocialLink href="https://www.instagram.com/tacotaka1/" icon={<InstagramIcon />} label="Instagram" />
-                </div>
+            <div className="w-full max-w-xl bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-neon-purple/20 blur-[50px] pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-neon-cyan/20 blur-[50px] pointer-events-none"></div>
+                
+                <h3 className="text-xl font-bold text-white mb-6 text-center">Open a Channel</h3>
+                <ContactForm />
             </div>
-        </section>
+        </div>
     );
 }
 
@@ -47,10 +29,10 @@ function SocialLink({ href, icon, label }) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300"
+            className="flex flex-col items-center justify-center gap-2 p-4 bg-white/5 border border-white/5 text-gray-300 rounded-2xl hover:bg-neon-cyan/10 hover:border-neon-cyan/50 hover:text-white transition-all group h-full"
         >
-            {icon}
-            {label}
+            <span className="scale-125 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.8)] transition-all duration-300">{icon}</span>
+            <span className="font-mono text-[10px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">{label}</span>
         </a>
     );
 }

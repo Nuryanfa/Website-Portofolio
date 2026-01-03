@@ -52,6 +52,22 @@ export default function Dashboard({ auth, stats = {} }) {
                             </div>
                         </div>
 
+                        {/* Total Experiences */}
+                        <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                            <div className="p-6">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Total Experiences</p>
+                                        <p className="text-3xl font-bold text-gray-900 dark:text-white">{safeStats.total_experiences || 0}</p>
+                                    </div>
+                                    <div className="text-4xl">💼</div>
+                                </div>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                                    {safeStats.active_experiences || 0} active
+                                </p>
+                            </div>
+                        </div>
+
                         {/* Total Contacts */}
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="p-6">
@@ -84,6 +100,12 @@ export default function Dashboard({ auth, stats = {} }) {
                                         className="block text-sm hover:underline"
                                     >
                                         + New Skill
+                                    </Link>
+                                    <Link
+                                        href={route('admin.experiences.create')}
+                                        className="block text-sm hover:underline"
+                                    >
+                                        + New Experience
                                     </Link>
                                 </div>
                             </div>
@@ -134,6 +156,22 @@ export default function Dashboard({ auth, stats = {} }) {
                                     <div>
                                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Manage Skills</h3>
                                         <p className="text-sm text-gray-600 dark:text-gray-400">Update your skill levels</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+
+                        {/* Manage Experiences */}
+                        <Link
+                            href={route('admin.experiences.index')}
+                            className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg hover:shadow-lg transition-shadow"
+                        >
+                            <div className="p-6">
+                                <div className="flex items-center gap-4">
+                                    <div className="text-5xl">💼</div>
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Manage Experiences</h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Track your career journey</p>
                                     </div>
                                 </div>
                             </div>

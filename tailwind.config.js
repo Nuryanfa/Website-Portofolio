@@ -14,7 +14,24 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Outfit', 'Inter', ...defaultTheme.fontFamily.sans],
+                mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+            },
+            colors: {
+                void: {
+                    DEFAULT: '#0a0a12',
+                    dark: '#050508',
+                    light: '#141420',
+                },
+                neon: {
+                    cyan: '#00f3ff',
+                    purple: '#bc13fe',
+                    blue: '#4d4dff',
+                }
+            },
+            backgroundImage: {
+                'void-gradient': 'linear-gradient(to bottom right, #0a0a12, #050508)',
+                'grid-pattern': "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)",
             },
             keyframes: {
                 fadeInUp: {
@@ -73,6 +90,10 @@ export default {
                         transform: "translate(0px, 0px) scale(1)",
                     },
                 },
+                marquee: {
+                    "0%": { transform: "translateX(0%)" },
+                    "100%": { transform: "translateX(-100%)" },
+                },
             },
             animation: {
                 "fade-in-up": "fadeInUp 0.8s ease-out forwards",
@@ -81,7 +102,7 @@ export default {
                 "slide-in-right": "slideInRight 0.8s ease-out forwards",
                 "float": "float 3s ease-in-out infinite",
                 "pulse-slow": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                "blob": "blob 7s infinite",
+                "marquee": "marquee 25s linear infinite",
             },
         },
     },

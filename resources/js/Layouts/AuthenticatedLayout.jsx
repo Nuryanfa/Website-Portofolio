@@ -44,6 +44,12 @@ export default function AuthenticatedLayout({ header, children }) {
                                     Skills
                                 </NavLink>
                                 <NavLink
+                                    href={route('admin.experiences.index')}
+                                    active={route().current('admin.experiences.*')}
+                                >
+                                    Experiences
+                                </NavLink>
+                                <NavLink
                                     href={route('admin.contacts.index')}
                                     active={route().current('admin.contacts.*')}
                                 >
@@ -164,6 +170,12 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current('admin.skills.*')}
                         >
                             Skills
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('admin.experiences.index')}
+                            active={route().current('admin.experiences.*')}
+                        >
+                            Experiences
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
                             href={route('admin.contacts.index')}

@@ -1,58 +1,51 @@
 import React from 'react';
-import SectionTitle from '@/Components/SectionTitle';
+import { motion } from 'framer-motion';
 
-export default function ExperienceSection() {
-    // Data dummy untuk experience, bisa dipindah ke database nantinya
-    const experiences = [
+export default function ExperienceSection({ experiences = [] }) {
+    // Fallback if no experiences provided
+    const displayExperiences = experiences.length > 0 ? experiences : [
         {
-            year: '2023 - Present',
-            title: 'Full Stack Developer',
-            company: 'Freelance',
-            description: 'Membangun aplikasi web custom untuk berbagai klien menggunakan Laravel, React, dan Tailwind CSS.',
-        },
-        {
-            year: '2020 - 2024',
-            title: 'Mahasiswa Teknik Informatika',
-            company: 'Universitas',
-            description: 'Aktif dalam organisasi kemahasiswaan dan menyelesaikan project-project akademik dengan hasil memuaskan.',
-        },
+            year: 'Now',
+            title: 'No Data',
+            company: 'Admin Panel',
+            description: 'Please add experiences in the admin dashboard.',
+        }
     ];
 
     return (
-        <section
-            id="experience"
-            className="min-h-screen flex items-center py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
-        >
-            <div className="container mx-auto max-w-4xl">
-                <SectionTitle
-                    title="Experience"
-                    subtitle="Perjalanan karir dan pendidikan saya"
-                />
-                
-                <div className="relative border-l-4 border-blue-500/30 ml-3 md:ml-6 space-y-12">
-                    {experiences.map((exp, index) => (
-                        <div key={index} className="relative pl-8 md:pl-12 group">
-                            {/* Dot Indicator */}
-                            <div className="absolute -left-[11px] top-2 w-6 h-6 bg-white dark:bg-gray-800 border-4 border-blue-500 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
-                            
-                            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                                <span className="inline-block px-3 py-1 mb-2 text-sm font-semibold text-blue-600 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 rounded-full">
-                                    {exp.year}
-                                </span>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-2">
-                                    {exp.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 font-medium">
-                                    {exp.company}
-                                </p>
-                                <p className="text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
-                                    {exp.description}
-                                </p>
-                            </div>
+        <div className="relative space-y-24">
+            {displayExperiences.map((exp, index) => (
+                <div key={index} className={`relative flex items-center justify-between md:justify-normal ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} w-full`}>
+                    
+                    {/* Empty half for alignment */}
+                    <div className="hidden md:block w-5/12"></div>
+                    
+                    {/* Center Node on the Line */}
+                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-void-dark border-2 border-neon-cyan shadow-[0_0_15px_rgba(0,243,255,0.5)] z-20">
+                         <div className="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+
+                    {/* Content Card */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        className={`w-full md:w-5/12 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}
+                    >
+                        <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl hover:border-neon-purple/50 transition-colors duration-300">
+                             <span className="inline-block px-3 py-1 mb-2 text-xs font-mono text-neon-cyan bg-neon-cyan/10 rounded-full border border-neon-cyan/20">
+                                {exp.year}
+                            </span>
+                            <h3 className="text-xl font-bold text-white mb-1">{exp.title}</h3>
+                            <p className="text-sm text-neon-purple mb-4 font-mono">{exp.company}</p>
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                                {exp.description}
+                            </p>
                         </div>
-                    ))}
+                    </motion.div>
                 </div>
-            </div>
-        </section>
+            ))}
+        </div>
     );
 }

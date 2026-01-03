@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
@@ -28,23 +28,10 @@ class ContactController extends Controller
             'subject' => $validated['subject'],
         ]);
 
-        // Option 1: Send email (uncomment when email is configured)
-        /*
-        try {
-            Mail::send('emails.contact', $validated, function ($message) use ($validated) {
-                $message->to('your.email@example.com')
-                    ->subject('New Contact: ' . $validated['subject'])
-                    ->replyTo($validated['email'], $validated['name']);
-            });
-        } catch (\Exception $e) {
-            Log::error('Failed to send contact email: ' . $e->getMessage());
-        }
-        */
+        // Option 1: Send email (Disabled as per user request)
+        // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new \App\Mail\ContactFormMail($validated));
 
-        // Option 2: Send to Telegram/Discord/Slack webhook
-        // $this->sendToWebhook($validated);
-
-        return back()->with('success', 'Pesan berhasil dikirim!');
+        return back()->with('success', 'Pesan berhasil dikirim! Terima kasih telah menghubungi saya.');
     }
 
     /**

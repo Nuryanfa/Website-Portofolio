@@ -27,6 +27,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
         'projects' => \App\Models\Project::active()->ordered()->get(),
         'skills' => \App\Models\Skill::active()->ordered()->get(),
+        'experiences' => \App\Models\Experience::active()->ordered()->get(),
     ]);
 });
 
@@ -40,6 +41,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 // Admin routes
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::redirect('/', '/admin/dashboard');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     
     // Projects
@@ -47,6 +49,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     
     // Skills
     Route::resource('skills', \App\Http\Controllers\Admin\SkillController::class);
+
+    // Experiences
+    Route::resource('experiences', \App\Http\Controllers\Admin\ExperienceController::class);
     
     // Contacts
     Route::get('contacts', [\App\Http\Controllers\Admin\ContactController::class, 'index'])->name('contacts.index');
