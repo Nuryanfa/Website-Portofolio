@@ -122,7 +122,7 @@ export default function Edit({ auth, project }) {
                                         id="title"
                                         value={data.title}
                                         onChange={(e) => setData('title', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         required
                                     />
                                     {errors.title && <div className="text-red-600 text-sm mt-1">{errors.title}</div>}
@@ -138,7 +138,7 @@ export default function Edit({ auth, project }) {
                                         value={data.description}
                                         onChange={(e) => setData('description', e.target.value)}
                                         rows={4}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         required
                                     />
                                     {errors.description && <div className="text-red-600 text-sm mt-1">{errors.description}</div>}
@@ -176,7 +176,7 @@ export default function Edit({ auth, project }) {
                                             value={tagInput}
                                             onChange={(e) => setTagInput(e.target.value)}
                                             onKeyPress={handleTagKeyPress}
-                                            className="flex-1 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                            className="flex-1 rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                             placeholder="Add technology..."
                                         />
                                         <button
@@ -221,7 +221,7 @@ export default function Edit({ auth, project }) {
                                         id="link"
                                         value={data.link}
                                         onChange={(e) => setData('link', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     />
                                     {errors.link && <div className="text-red-600 text-sm mt-1">{errors.link}</div>}
                                 </div>
@@ -236,7 +236,7 @@ export default function Edit({ auth, project }) {
                                         id="order"
                                         value={data.order}
                                         onChange={(e) => setData('order', parseInt(e.target.value) || 0)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     />
                                     {errors.order && <div className="text-red-600 text-sm mt-1">{errors.order}</div>}
                                 </div>

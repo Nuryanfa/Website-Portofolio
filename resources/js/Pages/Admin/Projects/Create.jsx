@@ -76,7 +76,7 @@ export default function Create({ auth }) {
                                         id="title"
                                         value={data.title}
                                         onChange={(e) => setData('title', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         placeholder="E-Commerce Platform"
                                         required
                                     />
@@ -93,7 +93,7 @@ export default function Create({ auth }) {
                                         value={data.description}
                                         onChange={(e) => setData('description', e.target.value)}
                                         rows={4}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         placeholder="A modern e-commerce platform with payment gateway and admin dashboard..."
                                         required
                                     />
@@ -132,7 +132,7 @@ export default function Create({ auth }) {
                                             value={tagInput}
                                             onChange={(e) => setTagInput(e.target.value)}
                                             onKeyPress={handleTagKeyPress}
-                                            className="flex-1 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                            className="flex-1 rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                             placeholder="Laravel, React, Tailwind..."
                                         />
                                         <button
@@ -177,7 +177,7 @@ export default function Create({ auth }) {
                                         id="link"
                                         value={data.link}
                                         onChange={(e) => setData('link', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         placeholder="https://github.com/username/project"
                                     />
                                     {errors.link && <div className="text-red-600 text-sm mt-1">{errors.link}</div>}
@@ -193,7 +193,7 @@ export default function Create({ auth }) {
                                         id="order"
                                         value={data.order}
                                         onChange={(e) => setData('order', parseInt(e.target.value) || 0)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        className="mt-1 block w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         placeholder="0"
                                     />
                                     {errors.order && <div className="text-red-600 text-sm mt-1">{errors.order}</div>}

@@ -25,23 +25,37 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        \Illuminate\Support\Facades\Log::info('Project Create Request:', $request->all());
+
+        $rules = [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'tags' => 'required|array',
             'link' => 'nullable|url',
-            'image' => 'nullable|image|max:2048', // Validate as image file
+            // 'image' => 'nullable|image|max:2048', // Removed loose validation
             'order' => 'nullable|integer',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
-        ]);
+        ];
+
+        // If a file is uploaded, validate it strictly
+        if ($request->hasFile('image')) {
+            $rules['image'] = 'image|max:2048';
+        } else {
+            $rules['image'] = 'nullable';
+        }
+
+        $validated = $request->validate($rules);
 
         if ($request->hasFile('image')) {
+            \Illuminate\Support\Facades\Log::info('Processing create file upload...');
             $path = $request->file('image')->store('projects', 'public');
-            $validated['image'] = $path; // Store the path (e.g., projects/filename.jpg)
+            $validated['image'] = $path;
+            \Illuminate\Support\Facades\Log::info('File stored at: ' . $path);
         }
 
         $project = Project::create($validated);
+        \Illuminate\Support\Facades\Log::info('Project created: ' . $project->id);
 
         return redirect()->route('admin.projects.index')
             ->with('success', "Project '{$project->title}' created successfully!");
@@ -56,19 +70,32 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
-        $validated = $request->validate([
+        \Illuminate\Support\Facades\Log::info('Project Update Request:', $request->all());
+        \Illuminate\Support\Facades\Log::info('Has File: ' . ($request->hasFile('image') ? 'Yes' : 'No'));
+
+        $rules = [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'tags' => 'required|array',
             'link' => 'nullable|url',
-            'image' => 'nullable', // Allow string (existing path) or file (new upload)
+            // 'image' => 'nullable', // Removed loose validation
             'order' => 'nullable|integer',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
-        ]);
+        ];
+
+        // If a file is uploaded, validate it strictly
+        if ($request->hasFile('image')) {
+            $rules['image'] = 'image|max:2048';
+        } else {
+            $rules['image'] = 'nullable';
+        }
+
+        $validated = $request->validate($rules);
 
         // Handle Image Upload
         if ($request->hasFile('image')) {
+            \Illuminate\Support\Facades\Log::info('Processing file upload...');
             // Delete old image if exists
             if ($project->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($project->image)) {
                 \Illuminate\Support\Facades\Storage::disk('public')->delete($project->image);
@@ -76,15 +103,12 @@ class ProjectController extends Controller
 
             $path = $request->file('image')->store('projects', 'public');
             $validated['image'] = $path;
+            
+            \Illuminate\Support\Facades\Log::info('File stored at: ' . $path);
         } else {
             // Keep existing image if no new file uploaded
-            // If the frontend sends null or doesn't send 'image' when keeping existing, we don't overwrite it.
-            // However, our frontend sends the existing string URL if not changed? 
-            // Wait, standard file input doesn't allow setting value.
-            // If user doesn't select a file, data.image is null (in React state initialization I set it to null or URL?)
-            // In Edit.jsx I set: `image: null`. 
-            // So if user doesn't touch it, it sends `null`.
-            unset($validated['image']); // Don't update image column if no file uploaded
+            unset($validated['image']);
+            \Illuminate\Support\Facades\Log::info('No file uploaded, keeping existing image.');
         }
 
         $project->update($validated);

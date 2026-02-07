@@ -116,7 +116,7 @@ export default function Index({ auth, projects }) {
                                                                 {project.image ? (
                                                                     <img
                                                                         className="h-12 w-12 rounded-lg object-cover"
-                                                                        src={project.image}
+                                                                        src={project.image_url || project.image}
                                                                         alt={project.title}
                                                                         onError={(e) => {
                                                                             e.target.style.display = 'none';
