@@ -26,6 +26,31 @@ class Project extends Model
         'is_active' => 'boolean',
     ];
 
+    protected $appends = ['image_url', 'technologies', 'project_url'];
+
+    public function getImageUrlAttribute()
+    {
+        if (!$this->image) {
+            return null;
+        }
+
+        if (filter_var($this->image, FILTER_VALIDATE_URL)) {
+            return $this->image;
+        }
+
+        return asset('storage/' . $this->image);
+    }
+
+    public function getTechnologiesAttribute()
+    {
+        return $this->tags;
+    }
+
+    public function getProjectUrlAttribute()
+    {
+        return $this->link;
+    }
+
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
