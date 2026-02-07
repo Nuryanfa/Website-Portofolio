@@ -115,7 +115,7 @@ export default function Index({ auth, projects }) {
                                                             <div className="flex-shrink-0 h-12 w-12">
                                                                 {project.image ? (
                                                                     <img
-                                                                        className="h-12 w-12 rounded-lg object-cover"
+                                                                        className="h-12 w-12 rounded-lg object-cover object-top"
                                                                         src={project.image_url || project.image}
                                                                         alt={project.title}
                                                                         onError={(e) => {

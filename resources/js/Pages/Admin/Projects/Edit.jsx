@@ -78,7 +78,7 @@ export default function Edit({ auth, project }) {
                                                         : (project.image ? `/storage/${project.image}` : '')
                                                 }
                                                 alt={data.title}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-cover object-top"
                                                 onError={(e) => {
                                                     e.target.style.display = 'none';
                                                     e.target.nextSibling.style.display = 'flex';
