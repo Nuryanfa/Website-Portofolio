@@ -35,7 +35,7 @@ export default function ProjectsSection({ projects }) {
                                 <img 
                                     src={project.image_url} 
                                     alt={project.title}
-                                    className="w-full h-full object-contain bg-gray-950"
+                                    className="w-full h-full object-cover object-top transition-[object-position] duration-[2000ms] ease-in-out group-hover:object-bottom"
                                     onError={(e) => {
                                         // Fallback jika gambar error/tidak ada
                                         e.target.style.display = 'none';
