@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@portfolio.com',
-            'password' => bcrypt('password'), // Change this in production!
+            'password' => bcrypt('mhmdyan@123'), // Change this in production!
         ]);
 
         // Seed projects and skills
