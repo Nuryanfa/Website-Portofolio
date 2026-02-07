@@ -20,6 +20,7 @@ export default function Create({ auth }) {
         e.preventDefault();
         post(route('admin.projects.store'), {
             onSuccess: () => reset(),
+            forceFormData: true,
         });
     };
 
@@ -99,23 +100,25 @@ export default function Create({ auth }) {
                                     {errors.description && <div className="text-red-600 text-sm mt-1">{errors.description}</div>}
                                 </div>
 
-                                {/* Image URL */}
+                                {/* Image Upload */}
                                 <div>
                                     <label htmlFor="image" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Image URL
+                                        Project Image
                                     </label>
                                     <input
-                                        type="url"
+                                        type="file"
                                         id="image"
-                                        value={data.image}
-                                        onChange={(e) => setData('image', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="/images/projects/ecommerce.jpg"
+                                        accept="image/*"
+                                        onChange={(e) => setData('image', e.target.files[0])}
+                                        className="mt-1 block w-full text-sm text-gray-500
+                                            file:mr-4 file:py-2 file:px-4
+                                            file:rounded-full file:border-0
+                                            file:text-sm file:font-semibold
+                                            file:bg-blue-50 file:text-blue-700
+                                            hover:file:bg-blue-100
+                                            dark:file:bg-gray-700 dark:file:text-gray-300"
                                     />
                                     {errors.image && <div className="text-red-600 text-sm mt-1">{errors.image}</div>}
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                        Upload image to public/images/projects/ folder and enter the path here
-                                    </p>
                                 </div>
 
                                 {/* Tags */}

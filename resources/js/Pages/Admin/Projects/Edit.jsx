@@ -3,10 +3,11 @@ import { Head, useForm, Link } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function Edit({ auth, project }) {
-    const { data, setData, patch, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
+        _method: 'PATCH',
         title: project.title || '',
         description: project.description || '',
-        image: project.image || '',
+        image: null, // File object or null
         tags: project.tags || [],
         link: project.link || '',
         order: project.order || 0,
@@ -18,7 +19,7 @@ export default function Edit({ auth, project }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        patch(route('admin.projects.update', project.id));
+        post(route('admin.projects.update', project.id));
     };
 
     const addTag = () => {
@@ -67,9 +68,13 @@ export default function Edit({ auth, project }) {
                                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Preview</h3>
                                 <div className="bg-white dark:bg-gray-600 rounded-lg shadow-md overflow-hidden max-w-sm">
                                     <div className="relative h-32 bg-gradient-to-br from-blue-500 to-purple-600">
-                                        {data.image ? (
+                                        {(data.image || project.image) ? (
                                             <img
-                                                src={data.image}
+                                                src={
+                                                    data.image instanceof File 
+                                                        ? URL.createObjectURL(data.image) 
+                                                        : (project.image ? `/storage/${project.image}` : '')
+                                                }
                                                 alt={data.title}
                                                 className="w-full h-full object-cover"
                                                 onError={(e) => {
@@ -79,11 +84,12 @@ export default function Edit({ auth, project }) {
                                             />
                                         ) : null}
                                         <div 
-                                            className={`w-full h-full flex items-center justify-center text-white text-4xl ${data.image ? 'hidden' : 'flex'}`}
+                                            className={`w-full h-full flex items-center justify-center text-white text-4xl ${(data.image || project.image) ? 'hidden' : 'flex'}`}
                                         >
                                             🚀
                                         </div>
                                     </div>
+
                                     <div className="p-4">
                                         <h4 className="font-bold text-gray-900 dark:text-white">{data.title || 'Project Title'}</h4>
                                         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
@@ -136,18 +142,23 @@ export default function Edit({ auth, project }) {
                                     {errors.description && <div className="text-red-600 text-sm mt-1">{errors.description}</div>}
                                 </div>
 
-                                {/* Image URL */}
+                                {/* Image Upload */}
                                 <div>
                                     <label htmlFor="image" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Image URL
+                                        Project Image
                                     </label>
                                     <input
-                                        type="url"
+                                        type="file"
                                         id="image"
-                                        value={data.image}
-                                        onChange={(e) => setData('image', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        placeholder="/images/projects/project.jpg"
+                                        accept="image/*"
+                                        onChange={(e) => setData('image', e.target.files[0])}
+                                        className="mt-1 block w-full text-sm text-gray-500
+                                            file:mr-4 file:py-2 file:px-4
+                                            file:rounded-full file:border-0
+                                            file:text-sm file:font-semibold
+                                            file:bg-blue-50 file:text-blue-700
+                                            hover:file:bg-blue-100
+                                            dark:file:bg-gray-700 dark:file:text-gray-300"
                                     />
                                     {errors.image && <div className="text-red-600 text-sm mt-1">{errors.image}</div>}
                                 </div>
