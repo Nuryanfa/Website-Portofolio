@@ -35,7 +35,7 @@ export default function ProjectsSection({ projects }) {
                                 <img 
                                     src={project.image_url} 
                                     alt={project.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover object-top"
                                     onError={(e) => {
                                         // Fallback jika gambar error/tidak ada
                                         e.target.style.display = 'none';
