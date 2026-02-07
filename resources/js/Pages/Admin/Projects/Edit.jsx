@@ -19,7 +19,9 @@ export default function Edit({ auth, project }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route('admin.projects.update', project.id));
+        post(route('admin.projects.update', project.id), {
+            forceFormData: true,
+        });
     };
 
     const addTag = () => {
